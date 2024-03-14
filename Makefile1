@@ -1,0 +1,90 @@
+################################################################################
+###############                GENERAL SETTINGS                   ##############
+################################################################################
+
+NAME := libft.a # Name of your program or your library (*.a)
+.DEFAULT_GOAL := all # default rule to be executed
+CC := cc # explicitly state your compiler
+AR := ar # explicitly state your archiver
+RM := rm -rf # state the command for clean and fclean (remove recurse force)
+
+################################################################################
+###############                  DIRECTORIES                      ##############
+################################################################################
+
+OBJ_DIR := obj-cache
+INC_DIRS := . # define where the header files are being stored ('.' == current directory)
+SRC_DIRS := . # define where your source files are stored ('.' == current directory)
+LIB_DIRS := .
+
+# Tell the Makefile where headers and source files are
+vpath %.h $(INC_DIRS)
+vpath %.c $(SRC_DIRS)
+
+################################################################################
+###############                  SOURCE FILES                     ##############
+################################################################################
+
+SRCS += ft_bzero.c
+SRCS += ft_isalnum.c
+SRCS += ft_isalpha.c
+SRCS += ft_isascii.c
+SRCS += ft_isdigit.c
+SRCS += ft_isprint.c
+SRCS += ft_memcpy.c
+SRCS += ft_memset.c
+SRCS += ft_strchr.c
+SRCS += ft_strlcat.c
+SRCS += ft_strlcpy.c
+SRCS += ft_strlen.c
+SRCS += ft_strncmp.c
+SRCS += ft_strrchr.c
+SRCS += ft_tolower.c
+SRCS += ft_toupper.c
+
+# SRCS += ...
+OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
+
+################################################################################
+########                         COMPILING                      ################
+################################################################################
+
+CFLAGS := -Wextra -Wall -Werror -MMD -MP $(addprefix -I, $(INC_DIRS)) # flags for the compilation stage
+LDFLAGS := $(addprefix -L, $(LIB_DIRS)) -lft # flags for the linking stage
+ARFLAGS := -rcs # flags for the archiving stage
+
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+# alternative for $(OBJS) within the archiving step $^
+
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $@
+
+clean:
+	$(RM) $(OBJ_DIR)
+
+fclean: clean
+	$(RM) $(NAME) test.out
+
+re: fclean all
+
+-include $(OBJS:%.o=%.d)
+
+.PHONY: all fclean clean re # phony targets will always be seen as a rule (and not a file)
+
+# test: $(NAME)
+# 	$(CC) main.c $(CLFAGS) $(LDFLAGS) -o test.out
+
+# $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
+#	$(CC) $(CFLAGS) -c $< -o $@
+
+# $@ ----> Platzhalter fuer, das was links vom ':' steht.
+# $^ ----> Platzhalter fuer alles nach dem ':' Zeichen.
+# : ----> sets depency ==> "$(NAME): $(OBJS)" Command will just run, if "$(OBJS)" is satified
+# % ----> Wildcard charcter for example for %.c files.
