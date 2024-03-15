@@ -1,4 +1,11 @@
+###MAKEFILE###
+
+NAME = libft.a
+
+HEADER = libft.h
+
 CFLAGS = cc -Wall -Wextra -Werror
+
 .DEFAULT_GOAL := all # default rule to be executed
 
 SRCS += ft_bzero.c
@@ -36,15 +43,11 @@ SRCS += ft_strmapi.c
 SRCS += ft_striteri.c
 SRCS += ft_itoa.c
 
+BONUS_SRCS += ft_lstnew_bonus.c
+
 OBJS = $(SRCS:.c=.o)
 
-BONUS_SRCS +=
-
 BONUS_OBJS = $(BONUS_SRCS:.c=.o)
-
-NAME = libft.a
-
-HEADER = libft.h
 
 all: $(NAME) #jetyzt handelt es sich um Befehle, was durch ':' verdeutlicht wird. Davor haben wir nur aliase erstrellt.
 
@@ -55,9 +58,12 @@ $(OBJS): %.o: %.c $(HEADER) #cc $(CFLAGS) -I libft.h -c $< -o $@: -I Option bede
 	$(CFLAGS) -I $(HEADER) -c $< -o $@
 #$(CFLAGS) -I $(HEADER) -c $< -o $@: first in $(OBJS): %.o: %.c $(HEADER), we replace *.o files to &.c files and check wether we have a header
 #Then we excecute this $(CFLAGS) -I $(HEADER) -c $< -o $@ : "-c $< says to compile .c file into .o files"
+#cc $(CFLAGS) -I libft.h -c $< -o $@: -I Option bedeutet, dass libft.h included wird.
+$(BONUS_OBJS): %.o: %.c $(HEADER)
+	$(CFLAGS) -I $(HEADER) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
