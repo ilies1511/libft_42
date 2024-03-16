@@ -44,6 +44,14 @@ SRCS += ft_striteri.c
 SRCS += ft_itoa.c
 
 BONUS_SRCS += ft_lstnew_bonus.c
+BONUS_SRCS += ft_lstadd_front_bonus.c
+BONUS_SRCS += ft_lstsize_bonus.c
+BONUS_SRCS += ft_lstlast_bonus.c
+BONUS_SRCS += ft_lstadd_back_bonus.c
+BONUS_SRCS += ft_lstdelone_bonus.c
+BONUS_SRCS += ft_lstclear_bonus.c
+BONUS_SRCS += ft_lstiter_bonus.c
+BONUS_SRCS += ft_lstmap_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 

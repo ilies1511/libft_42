@@ -6,13 +6,13 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 02:04:18 by iziane            #+#    #+#             */
-/*   Updated: 2024/03/14 15:26:19 by iziane           ###   ########.fr       */
+/*   Updated: 2024/03/15 16:49:09 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	buffsize(long cpy)
+static int	buffsize(long cpy)
 {
 	int	counter;
 
@@ -27,7 +27,7 @@ int	buffsize(long cpy)
 	return (counter);
 }
 
-char	*filler(int sign, int buffer, long n)
+static char	*filler(int sign, int buffer, long n)
 {
 	char	*new;
 	int		i;

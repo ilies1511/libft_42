@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 18:01:11 by iziane            #+#    #+#             */
-/*   Updated: 2024/03/15 16:46:57 by iziane           ###   ########.fr       */
+/*   Created: 2024/03/15 17:43:44 by iziane            #+#    #+#             */
+/*   Updated: 2024/03/15 20:44:12 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-// typedef struct s_list
-// {
-// 	void			*content;
-// 	struct s_list	*next;
-// }					t_list;
-
-t_list	*ft_lstnew(void *content)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*head;
+	t_list	*last;
 
-	head = (struct s_list *)malloc(sizeof(t_list));
-	if (head == NULL)
-		return (NULL);
-	head->content = content;
-	head->next = NULL;
-	return (head);
+	if (lst == NULL)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	last = ft_lstlast(*lst);
+	last->next = new;
 }
-
-// for an array I need "i" iterator
-// for a linked list I need "*current"

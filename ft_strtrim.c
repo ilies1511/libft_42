@@ -6,13 +6,13 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 00:45:38 by iziane            #+#    #+#             */
-/*   Updated: 2024/03/13 02:58:49 by iziane           ###   ########.fr       */
+/*   Updated: 2024/03/15 16:47:34 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	index_finder(char c, char const *set)
+static int	index_finder(char c, char const *set)
 {
 	while (*set)
 	{

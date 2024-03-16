@@ -6,13 +6,13 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:01:57 by iziane            #+#    #+#             */
-/*   Updated: 2024/03/13 23:08:12 by iziane           ###   ########.fr       */
+/*   Updated: 2024/03/15 16:48:33 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_word(const char *str, char c)
+static int	count_word(const char *str, char c)
 {
 	int	i;
 	int	counter;
@@ -28,7 +28,7 @@ int	count_word(const char *str, char c)
 	return (counter);
 }
 
-void	free_before(char **res, size_t i)
+static void	free_before(char **res, size_t i)
 {
 	if (i == 0)
 	{
@@ -43,7 +43,7 @@ void	free_before(char **res, size_t i)
 	free(res);
 }
 
-char	**split_magic(const char *s, char **res, char c, size_t words)
+static char	**split_magic(const char *s, char **res, char c, size_t words)
 {
 	size_t	i;
 	size_t	k;
