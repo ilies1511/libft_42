@@ -6,18 +6,15 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 22:39:25 by iziane            #+#    #+#             */
-/*   Updated: 2024/03/16 01:23:06 by iziane           ###   ########.fr       */
+/*   Updated: 2024/03/16 01:40:33 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <string.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <ctype.h>
 
 typedef struct s_list
 {

@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 00:45:38 by iziane            #+#    #+#             */
-/*   Updated: 2024/03/15 16:47:34 by iziane           ###   ########.fr       */
+/*   Updated: 2024/03/16 01:45:07 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	k = 0;
 	if (s1 == NULL || set == NULL)
 		return (NULL);
-	len = strlen(s1);
+	len = ft_strlen(s1);
 	start = 0;
 	while (start < len && index_finder(s1[start], set))
 		start++;
