@@ -6,7 +6,7 @@
 /*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 22:39:25 by iziane            #+#    #+#             */
-/*   Updated: 2024/03/16 01:40:33 by iziane           ###   ########.fr       */
+/*   Updated: 2024/10/19 00:12:02 by iziane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "./get_next_line/get_next_line.h"
 
 typedef struct s_list
 {
@@ -22,6 +23,10 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
+double	ft_atod(char *str);
+int		count_words(const char *str);
+void	ft_free_libft(char **str);
+void	ft_free_2d(char **str);
 int		ft_isalnum(int x);
 int		ft_isalpha(int argument);
 int		ft_isascii(int argument);
