@@ -9,8 +9,8 @@ RM := rm -rf
 ################################################################################
 
 OBJ_DIR := _obj
-INC_DIRS := .
-SRC_DIRS := .
+INC_DIRS := . mini_garbage_collector
+SRC_DIRS := . mini_garbage_collector
 
 # Tell the Makefile where headers and source files are
 vpath %.h $(INC_DIRS)
@@ -34,6 +34,10 @@ BONUS_SRCS := ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 
 GNL_SRCS := get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
+GC_SRCS := mini_garbage_collector/gb_garbage_collector.c mini_garbage_collector/gb_utils.c mini_garbage_collector/at_exit.c
+
+SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
+
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 BONUS_OBJS := $(addprefix $(OBJ_DIR)/, $(BONUS_SRCS:%.c=%.o))
 GNL_OBJS := $(addprefix $(OBJ_DIR)/, $(GNL_SRCS:%.c=%.o))
@@ -42,7 +46,8 @@ GNL_OBJS := $(addprefix $(OBJ_DIR)/, $(GNL_SRCS:%.c=%.o))
 ########                         COMPILING                      ################
 ################################################################################
 
-CFLAGS := -Wall -Wextra -Werror -g -MMD -MP -I$(INC_DIRS)
+# CFLAGS := -Wall -Wextra -Werror -g -MMD -MP -I$(INC_DIRS)
+CFLAGS := -Wall -Wextra -Werror -g -MMD -MP $(addprefix -I, $(INC_DIRS))
 LDFLAGS :=
 ARFLAGS := -rcs
 
@@ -51,12 +56,18 @@ all: $(NAME)
 $(NAME): $(OBJS) $(BONUS_OBJS) $(GNL_OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS) $(GNL_OBJS)
 
-$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(OBJ_DIR)/get_next_line
+# $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(OBJ_DIR)/get_next_line
+# 	$(CC) $(CFLAGS) -c $< -o $@
+# Rule to compile .o files
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(OBJ_DIR)/mini_garbage_collector $(OBJ_DIR)/get_next_line
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Ensure the directories exist
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/mini_garbage_collector:
+	mkdir -p $(OBJ_DIR)/mini_garbage_collector
 
 $(OBJ_DIR)/get_next_line:
 	mkdir -p $(OBJ_DIR)/get_next_line
