@@ -1,0 +1,3 @@
+[submodule "mini_garbage_collector"]
+	path = mini_garbage_collector
+	url = https://github.com/ilies1511/mini_garbage_collector.git
