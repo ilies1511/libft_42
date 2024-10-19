@@ -39,8 +39,9 @@ GC_SRCS := mini_garbage_collector/gb_garbage_collector.c mini_garbage_collector/
 SRCS += $(BONUS_SRCS) $(GC_SRCS) $(GNL_SRCS)
 
 OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
-BONUS_OBJS := $(addprefix $(OBJ_DIR)/, $(BONUS_SRCS:%.c=%.o))
-GNL_OBJS := $(addprefix $(OBJ_DIR)/, $(GNL_SRCS:%.c=%.o))
+# BONUS_OBJS := $(addprefix $(OBJ_DIR)/, $(BONUS_SRCS:%.c=%.o))
+# GNL_OBJS := $(addprefix $(OBJ_DIR)/, $(GNL_SRCS:%.c=%.o))
+# GC_OBJS := $(addprefix $(OBJ_DIR)/, $(GC_SRCS:%.c=%.o))
 
 ################################################################################
 ########                         COMPILING                      ################
@@ -53,11 +54,9 @@ ARFLAGS := -rcs
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(BONUS_OBJS) $(GNL_OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS) $(BONUS_OBJS) $(GNL_OBJS)
+$(NAME): $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-# $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(OBJ_DIR)/get_next_line
-# 	$(CC) $(CFLAGS) -c $< -o $@
 # Rule to compile .o files
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(OBJ_DIR)/mini_garbage_collector $(OBJ_DIR)/get_next_line
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -92,7 +91,7 @@ submodule_rebuild:
 	git submodule update --init --recursive
 
 -include $(OBJS:%.o=%.d)
--include $(BONUS_OBJS:%.o=%.d)
--include $(GNL_OBJS:%.o=%.d)
+# -include $(BONUS_OBJS:%.o=%.d)
+# -include $(GNL_OBJS:%.o=%.d)
 
 .PHONY: all clean fclean re bonus re_sub submodule_rebuild
