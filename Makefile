@@ -78,12 +78,21 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: fclean submodule_update all
+
+submodule_update:
+	git submodule update --remote --merge
 
 bonus: all
+
+re_sub: submodule_rebuild
+
+submodule_rebuild:
+	git submodule deinit -f .
+	git submodule update --init --recursive
 
 -include $(OBJS:%.o=%.d)
 -include $(BONUS_OBJS:%.o=%.d)
 -include $(GNL_OBJS:%.o=%.d)
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus re_sub submodule_rebuild
