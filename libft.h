@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilies1511 <ilies1511@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 22:39:25 by iziane            #+#    #+#             */
-/*   Updated: 2024/10/19 00:12:02 by iziane           ###   ########.fr       */
+/*   Updated: 2024/11/10 07:30:05 by ilies1511        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "./get_next_line/get_next_line.h"
+# include "mini_garbage_collector/garbage_collector.h"
 
 typedef struct s_list
 {
