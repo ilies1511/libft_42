@@ -99,4 +99,8 @@ submodule_rebuild:
 # -include $(BONUS_OBJS:%.o=%.d)
 # -include $(GNL_OBJS:%.o=%.d)
 
+ifeq ("$(wildcard mini_garbage_collector/garbage_collector.h)","mini_garbage_collector/garbage_collector.h")
+	CFLAGS += -DGARBAGE_COLLECTOR_EXISTS
+endif
+
 .PHONY: all clean fclean re bonus re_sub submodule_rebuild
