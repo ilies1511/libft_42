@@ -4,6 +4,10 @@ CC := cc
 AR := ar
 RM := rm -rf
 
+ifeq ("$(wildcard mini_garbage_collector/garbage_collector.h)","mini_garbage_collector/garbage_collector.h")
+	CFLAGS += -DGARBAGE_COLLECTOR_EXISTS
+endif
+
 ################################################################################
 ###############                  DIRECTORIES                      ##############
 ################################################################################
