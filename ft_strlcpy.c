@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iziane <iziane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilies1511 <ilies1511@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 17:01:14 by iziane            #+#    #+#             */
-/*   Updated: 2024/03/14 00:24:04 by iziane           ###   ########.fr       */
+/*   Updated: 2024/11/10 06:17:19 by ilies1511        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t	counter;
 	size_t	src_len;
 
 	src_len = 0;
 	while (src[src_len] != '\0')
 		src_len++;
-	counter = 0;
 	if (dstsize == 0)
 		return (src_len);
 	i = 0;

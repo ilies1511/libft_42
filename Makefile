@@ -56,6 +56,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	@echo "\033[0;32mSuccessful Compilation of $(NAME)\033[0m"
 
 # Rule to compile .o files
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(OBJ_DIR)/mini_garbage_collector $(OBJ_DIR)/get_next_line
