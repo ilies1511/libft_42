@@ -4,10 +4,6 @@ CC := cc
 AR := ar
 RM := rm -rf
 
-ifeq ("$(wildcard mini_garbage_collector/garbage_collector.h)","mini_garbage_collector/garbage_collector.h")
-	CFLAGS += -DGARBAGE_COLLECTOR_EXISTS
-endif
-
 ################################################################################
 ###############                  DIRECTORIES                      ##############
 ################################################################################
@@ -56,7 +52,7 @@ CFLAGS := -Wall -Wextra -Werror -g -MMD -MP $(addprefix -I, $(INC_DIRS))
 LDFLAGS :=
 ARFLAGS := -rcs
 
-all: $(NAME)
+all: submodules $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
@@ -95,12 +91,11 @@ submodule_rebuild:
 	git submodule deinit -f .
 	git submodule update --init --recursive
 
+submodules:
+	@git submodule update --init --recursive
+
 -include $(OBJS:%.o=%.d)
 # -include $(BONUS_OBJS:%.o=%.d)
 # -include $(GNL_OBJS:%.o=%.d)
 
-ifeq ("$(wildcard mini_garbage_collector/garbage_collector.h)","mini_garbage_collector/garbage_collector.h")
-	CFLAGS += -DGARBAGE_COLLECTOR_EXISTS
-endif
-
-.PHONY: all clean fclean re bonus re_sub submodule_rebuild
+.PHONY: all clean fclean re bonus re_sub submodule_rebuild submodules
